@@ -22,7 +22,8 @@
 | Column                | Type        | Options         |
 | ----------            | --------    | --------------  |
 | user                  | references  | null: false,  foreign_key: true      |
-| item_text             | string      | null: false     |
+| item_name             | text        | null: false     |
+| item_detail           | text        | null: false     |
 | item_category_id      | int         | null: false     |
 | item_status_id        | int         | null: false     |
 | item_delivery_price_id| int         | null: false     |
@@ -33,7 +34,7 @@
 ### Association
 
 - has_one :purchase
-- belongs_to :users
+- belongs_to :user
 
 ## purchase テーブル
 
@@ -48,7 +49,7 @@
 
 ### Association
 
-- belongs_to :users
+- belongs_to :user
 - belongs_to :item
 
 ## delivery テーブル
@@ -57,10 +58,11 @@
 | ----------               | --------    | --------------------------------|
 | purchase                 | references  | null: false,  foreign_key: true |
 | delivery_mail_num        | string      | null: false,                    |
-| delivery_prefectures     | string      | null: false,                    |
+| tem_delivery_area_id     | int         | null: false,                    |
 | delivery_shikutyouson    | string      | null: false,                    |
+| delivery_numbering       | string      | null: false,                    |
 | delivery_building_name   | string      | null: false,                    |
-| delivery_telephone       | int         | null: false,                    |
+| delivery_telephone       | String      | null: false,                    |
 
 
 ### Association
