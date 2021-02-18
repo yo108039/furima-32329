@@ -2,16 +2,16 @@
 
 ## users テーブル
 
-| Column             | Type    | Options         |
-| ----------         | --------| --------------  |
-| nick_name          | string  | null: false     |
-| email              | string  | null: false     |
-| encrypted_password | string  | null: false     |
-| last_name          | string  | null: false     |
-| name               | string  | null: false     |
-| last_name_kana     | string  | null: false     |
-| name_kana          | string  | null: false     |
-| birth_day          | date    | null: false     |
+| Column             | Type    | Options                    |
+| ----------         | --------| --------------             |
+| nick_name          | string  | null: false                |
+| email              | string  | null: false,  unique: true |
+| encrypted_password | string  | null: false                |
+| last_name          | string  | null: false                |
+| name               | string  | null: false                |
+| last_name_kana     | string  | null: false                |
+| name_kana          | string  | null: false                |
+| birth_day          | date    | null: false                |
 
 ### Association
 
@@ -23,14 +23,14 @@
 | Column                | Type        | Options         |
 | ----------            | --------    | --------------  |
 | user                  | references  | null: false,  foreign_key: true      |
-| item_name             | string      | null: false     |
-| item_detail           | text        | null: false     |
-| item_category_id      | integer     | null: false     |
-| item_status_id        | integer     | null: false     |
-| item_delivery_price_id| integer     | null: false     |
-| item_delivery_area_id | integer     | null: false     |
-| item_delivery_day_id  | integer     | null: false     |
-| item_price            | integer     | null: false     |
+| name                  | string      | null: false     |
+| detail                | text        | null: false     |
+| category_id           | integer     | null: false     |
+| status_id             | integer     | null: false     |
+| delivery_price_id     | integer     | null: false     |
+| delivery_area_id      | integer     | null: false     |
+| delivery_day_id       | integer     | null: false     |
+| price                 | integer     | null: false     |
 
 ### Association
 
@@ -57,7 +57,7 @@
 | ----------               | --------    | --------------------------------|
 | purchase                 | references  | null: false,  foreign_key: true |
 | delivery_mail_num        | string      | null: false,                    |
-| item_delivery_area_id    | integer     | null: false,                    |
+| delivery_area_id         | integer     | null: false,                    |
 | delivery_shikutyouson    | string      | null: false,                    |
 | delivery_numbering       | string      | null: false,                    |
 | delivery_building_name   | string      |                                 |
