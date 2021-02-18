@@ -22,7 +22,7 @@
 | Column                | Type        | Options         |
 | ----------            | --------    | --------------  |
 | user                  | references  | null: false,  foreign_key: true      |
-| item_name             | String      | null: false     |
+| item_name             | string      | null: false     |
 | item_detail           | text        | null: false     |
 | item_category_id      | integer     | null: false     |
 | item_status_id        | integer     | null: false     |
@@ -36,7 +36,7 @@
 - has_one :purchase
 - belongs_to :user
 
-## purchase テーブル
+## purchases テーブル
 
 | Column                  | Type        | Options                         |
 | ----------              | --------    | --------------------------------|
@@ -50,7 +50,7 @@
 - has_one    :delivery
 
 
-## delivery テーブル
+## deliveries テーブル
 
 | Column                   | Type        | Options                         |
 | ----------               | --------    | --------------------------------|
@@ -60,7 +60,7 @@
 | delivery_shikutyouson    | string      | null: false,                    |
 | delivery_numbering       | string      | null: false,                    |
 | delivery_building_name   | string      |                                 |
-| delivery_telephone       | String      | null: false,                    |
+| delivery_telephone       | string      | null: false,                    |
 
 
 ### Association
