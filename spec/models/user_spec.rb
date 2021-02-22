@@ -7,6 +7,19 @@ RSpec.describe User, type: :model do
 
   describe '新規登録/ユーザー情報' do
     context '新規登録できるとき' do
+      it '全ての情報が入っている場合、登録できる' do
+        @user.email = 'test@test'
+        @user.password = '12345A'
+        @user.password_confirmation = '12345A'
+        @user.nick_name = 'ニックネーム'
+        @user.last_name = 'てすと'
+        @user.name = 'なまえ'
+        @user.last_name_kana = 'カナ'
+        @user.name_kana = 'テスト'
+        @user.birth_day = '19900101'
+        expect(@user).to be_valid
+      end
+
       it 'メールアドレスが@を含んでいる場合、登録できる' do
         @user.email = 'test@test'
         expect(@user).to be_valid
