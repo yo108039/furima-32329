@@ -2,7 +2,8 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
   def index
-    @item = Item.all.order("created_at DESC")
+    @item = Item.includes(:user).order("created_at DESC")
+    binding.pry
   end
 
   def new
