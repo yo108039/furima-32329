@@ -5,7 +5,6 @@ before_action :get_item_params, only: [:index, :create]
   def index
     #ログインユーザー判断処理
     if current_user.id == @item.user_id  || @item.order.nil? != true
-      binding.pry
       redirect_to root_path
     end
 
@@ -14,7 +13,6 @@ before_action :get_item_params, only: [:index, :create]
   
   def create
     @order_info = OrderInfo.new(order_params)
-    binding.pry
     if @order_info.valid?
       pay_item
       @order_info.save
@@ -35,7 +33,6 @@ before_action :get_item_params, only: [:index, :create]
   end
 
   def pay_item
-    binding.pry
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
       amount: @item.price,
