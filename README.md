@@ -16,7 +16,7 @@
 ### Association
 
 - has_many  :items
-- has_many  :purchases
+- has_many  :orders
 
 ## items テーブル
 
@@ -34,10 +34,10 @@
 
 ### Association
 
-- has_one :purchase
+- has_one :order
 - belongs_to :user
 
-## purchases テーブル
+## orders テーブル
 
 | Column                  | Type        | Options                         |
 | ----------              | --------    | --------------------------------|
@@ -55,7 +55,7 @@
 
 | Column                   | Type        | Options                         |
 | ----------               | --------    | --------------------------------|
-| purchase                 | references  | null: false,  foreign_key: true |
+| order                   | references  | null: false,  foreign_key: true |
 | delivery_mail_num        | string      | null: false,                    |
 | delivery_area_id         | integer     | null: false,                    |
 | delivery_shikutyouson    | string      | null: false,                    |
@@ -66,4 +66,4 @@
 
 ### Association
 
-- belongs_to :purchase
+- belongs_to :order
