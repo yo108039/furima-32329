@@ -1,12 +1,9 @@
 class OrdersController < ApplicationController
 before_action :authenticate_user!, only: [:index, :create]
 before_action :get_item_params, only: [:index, :create]
+before_action :judge_user_info, only: [:index, :create]
 
   def index
-    #ログインユーザー判断処理
-    if current_user.id == @item.user_id  || @item.order.nil? != true
-      redirect_to root_path
-    end
 
     @order_info = OrderInfo.new
   end
@@ -40,6 +37,14 @@ before_action :get_item_params, only: [:index, :create]
       currency: 'jpy'
     )
   end
+
+  #ログインユーザー判断処理
+  def judge_user_info
+    if current_user.id == @item.user_id  || @item.order.nil? != true
+      redirect_to root_path
+    end
+  end
+  
 
 end
 

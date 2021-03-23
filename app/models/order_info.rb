@@ -1,6 +1,6 @@
 class OrderInfo
   include ActiveModel::Model
-  attr_accessor :token, :item_id, :user_id, :credit_info, :credit_month, :credit_year, :credit_cvc,:delivery_mail_num, :delivery_area_id, :delivery_shikutyouson, :delivery_numbering, :delivery_building_name, :delivery_telephone
+  attr_accessor :token, :item_id, :user_id, :delivery_mail_num, :delivery_area_id, :delivery_shikutyouson, :delivery_numbering, :delivery_building_name, :delivery_telephone
 
   with_options presence: true do
 

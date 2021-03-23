@@ -4,6 +4,8 @@ RSpec.describe OrderInfo, type: :model do
   describe '商品購入機能テスト' do
     before do
       @order_info = FactoryBot.build(:order_info)
+      @order_info.user_id = 1
+      @order_info.item_id = 1
     end
 
     context '商品が購入できるとき' do
@@ -50,7 +52,7 @@ RSpec.describe OrderInfo, type: :model do
       end
 
       it '都道府県が---の場合、購入できない' do
-        @order_info.delivery_area_id = "1"
+        @order_info.delivery_area_id = 1
         @order_info.valid?
         expect(@order_info.errors.full_messages).to include "Delivery area must be other than 1"
       end
