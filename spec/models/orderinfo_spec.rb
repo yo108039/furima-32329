@@ -10,9 +10,27 @@ RSpec.describe OrderInfo, type: :model do
       it 'すべての値が正しく入力されていれば保存できること' do
        expect(@order_info).to be_valid
       end
+
+      it '建物名が抜けていても購入ができること' do
+        @order_info.delivery_building_name = nil
+        expect(@order_info).to be_valid
+       end
+ 
     end
 
     context '商品出品が購入できないとき' do
+      it 'ユーザーが存在しない場合、購入できない' do
+        @order_info.user_id = nil
+        @order_info.valid?
+        expect(@order_info.errors.full_messages).to include "User can't be blank"
+      end
+
+      it '購入対象が存在しない場合、購入できない' do
+        @order_info.item_id = nil
+        @order_info.valid?
+        expect(@order_info.errors.full_messages).to include "Item can't be blank"
+      end
+
       it 'トークンが空の場合、購入できない' do
         @order_info.token = nil
         @order_info.valid?
@@ -63,6 +81,12 @@ RSpec.describe OrderInfo, type: :model do
 
       it '電話番号が数字以外の場合、購入できない' do
         @order_info.delivery_telephone = "テスト"
+        @order_info.valid?
+        expect(@order_info.errors.full_messages).to include "Delivery telephone は11桁以内数字を使用してください"
+      end
+
+      it '電話番号が英数字混合では、購入できない' do
+        @order_info.delivery_telephone = "0A012345678"
         @order_info.valid?
         expect(@order_info.errors.full_messages).to include "Delivery telephone は11桁以内数字を使用してください"
       end

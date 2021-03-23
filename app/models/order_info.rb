@@ -5,6 +5,8 @@ class OrderInfo
   with_options presence: true do
 
     validates :token
+    validates :item_id
+    validates :user_id
     
     with_options format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'はハイフンを使用してください'}   do
       validates :delivery_mail_num

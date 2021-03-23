@@ -1,5 +1,7 @@
 FactoryBot.define do
   factory :order_info do
+    item_id           {1}
+    user_id           {1}
     credit_info       {"4242424242424242"}
     credit_cvc       {"123"}
     credit_month       {"12"}
